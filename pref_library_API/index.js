@@ -15,13 +15,14 @@ function askQuestion(query) {
 }
 
 function makeFolder (output, callback) {
-  fs.mkdir(output.label, function(err) {
+  fs.mkdir(`./outputs/${output.label}`, function(err) {
     if (err) {
       console.log(err)
       return
     } 
     else {
       console.log(`Dir ${output.label} created!`)
+      const out = output
       return callback(out)
     }
   })
