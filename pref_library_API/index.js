@@ -38,10 +38,17 @@ async function main () {
         console.log(err)
       }
       else {
-        const output = JSON.parse(res.rawResponse.slice(1, res.rawResponse.length))
-        console.log(output)
+        const cleaned = res.rawResponse.replace(/@/g, 'ao')
+        const output = JSON.parse(cleaned.slice(1, cleaned.length))
+        //console.log(output.sequences[0].canvases)
         makeFolder(output, function (out) {
-          console.log("hahaxd")
+          for (let i = 0; i < out.sequences[0].canvases.length; i++) {
+            //console.log(out.sequences[0].canvases[i].label)
+            //console.log(out.sequences[0].canvases[i].images[0].resource.id)
+            request
+              .get(out.sequences[0].canvases[i].images[0].resource.aoid)
+              .pipe(fs.createWriteStream(`./outputs/${out.label}/${out.sequences[0].canvases[i].label}.jpg`))
+          }
         })
       }
     })
