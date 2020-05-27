@@ -1,0 +1,14 @@
+{
+  "name": "preflibraryapi",
+  "version": "1.0",
+  "description": "A program to pull information from the API of the Okinawa Prefectural Library",
+  "main": "index.js",
+  "author": "Fewshin",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "superagent": "^5.2.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
