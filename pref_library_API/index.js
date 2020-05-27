@@ -14,21 +14,34 @@ function askQuestion(query) {
     }))
 }
 
-async function main () {
+function makeFolder (output, callback) {
+  fs.mkdir(output.label, function(err) {
+    if (err) {
+      console.log(err)
+      return
+    } 
+    else {
+      console.log(`Dir ${output.label} created!`)
+      return callback(out)
+    }
+  })
+}
 
-const link = await askQuestion("Please Input Link\n");
-//console.log(link)
+async function main () {
+  const link = await askQuestion("Please Input Link\n");
   request
     .get(link)
     .end((res, err) => {
       if (err) {
         console.log("PANIC!")
-        //console.log(err)
+        console.log(err)
       }
       else {
         const output = JSON.parse(res.rawResponse.slice(1, res.rawResponse.length))
         console.log(output)
-        //console.log(res.rawResponse.title)
+        makeFolder(output, function (out) {
+          console.log("hahaxd")
+        })
       }
     })
 }
