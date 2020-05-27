@@ -17,16 +17,18 @@ function askQuestion(query) {
 async function main () {
 
 const link = await askQuestion("Please Input Link\n");
-
+//console.log(link)
   request
     .get(link)
-    .end((err, res) => {
+    .end((res, err) => {
       if (err) {
-        console.log("Invalid Link!")
+        console.log("PANIC!")
+        //console.log(err)
       }
       else {
-        const output = JSON.parse(res.text)
+        const output = JSON.parse(res.rawResponse.slice(1, res.rawResponse.length))
         console.log(output)
+        //console.log(res.rawResponse.title)
       }
     })
 }
