@@ -1,0 +1,1 @@
+If there's an issue creating a folder just delete the existing folder and try again
