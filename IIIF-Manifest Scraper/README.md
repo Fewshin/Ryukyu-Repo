@@ -1,0 +1,1 @@
+Designed to work with IIIF-Manifests from the Okinawa Prefectural Library. More use cases may be implemented as needed.
